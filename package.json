@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "vite --host 100.64.0.2 --port 4173",
     "build": "vite build",
-    "preview": "vite preview --host 100.64.0.2 --port 4173"
+    "preview": "vite preview --host 100.64.0.2 --port 4173",
+    "test": "playwright test"
   },
   "dependencies": {
     "vue": "^3.5.18"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "vite": "^7.1.2"
   }

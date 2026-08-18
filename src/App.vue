@@ -47,11 +47,15 @@ function totals() {
   return { subtotal, fees, total: subtotal + fees }
 }
 
+function serializableSeats() {
+  return selectedSeats.value.map((seat) => ({ ...seat }))
+}
+
 function publishSelection() {
   window.parent?.postMessage({
     type: 'kivikyla-seatmap:selection',
     eventId: 'RAHINA-MMA-DEMO',
-    seats: selectedSeats.value,
+    seats: serializableSeats(),
     ...totals(),
   }, '*')
 }
@@ -60,7 +64,7 @@ function checkout() {
   window.parent?.postMessage({
     type: 'kivikyla-seatmap:checkout',
     eventId: 'RAHINA-MMA-DEMO',
-    seats: selectedSeats.value,
+    seats: serializableSeats(),
   }, '*')
   showToast('Demo: paikkavalinnat lähetettiin lippukaupalle')
 }
